@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Alomary | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        :root {
+            --primary-deep: #1e3f4f;
+            --primary-soft: #3a6b7c;
+            --accent-sand: #e9c7a3;
+            --accent-coral: #e5977c;
+            --bg-warm: #f7f2eb;
+            --text-dark: #1f2e38;
+            --text-soft: #3a525c;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 15px 35px -10px rgba(30, 63, 79, 0.12);
+            --shadow-hover: 0 25px 40px -12px rgba(30, 63, 79, 0.22);
+            --gradient-bg: linear-gradient(145deg, #f7f2eb 0%, #ffffff 100%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            color: var(--primary-deep);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 5px;
+            background: var(--accent-sand);
+            border-radius: 8px;
+        }
+
+        .navbar-custom {
+            background-color: var(--primary-deep) !important;
+            padding: 1rem 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-custom .navbar-brand {
+            color: white;
+            font-weight: 800;
+            font-size: 1.9rem;
+            letter-spacing: -1px;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            margin: 0 0.8rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: var(--accent-sand);
+            transform: translateY(-2px);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-sand);
+            transform: scale(1.15);
+        }
+
+        .hero-section {
+            background: var(--gradient-bg);
+            padding: 7rem 0 5rem 0;
+            border-bottom: 1px solid rgba(58, 107, 124, 0.1);
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-deep);
+            margin-bottom: 1rem;
+        }
+
+        .hero-name span {
+            color: var(--accent-coral);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            max-width: 780px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.7);
+            padding: 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            line-height: 1.7;
+        }
+
+        .hero-avatar {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--accent-sand);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s;
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.02);
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 40px;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-icon {
+            font-size: 3.5rem;
+            color: var(--primary-soft);
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--primary-deep);
+            margin-bottom: 1rem;
+        }
+
+        .skill-sub {
+            color: var(--accent-coral);
+            font-weight: 600;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .skill-items {
+            color: #4a636e;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .project-card-custom {
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            background: white;
+            margin-bottom: 2rem;
+        }
+
+        .project-card-custom:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px);
+        }
+
+        .project-img {
+            height: 260px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .project-content {
+            padding: 2.2rem;
+        }
+
+        .project-title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--primary-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: var(--accent-sand);
+            color: var(--primary-deep);
+            padding: 0.4rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom {
+            background: var(--primary-soft);
+            border: none;
+            color: white;
+            padding: 0.8rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-custom:hover {
+            background: var(--primary-deep);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-soft) 100%);
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.2rem;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: var(--accent-sand);
+            color: var(--primary-deep);
+            border: none;
+            padding: 1rem 3.5rem;
+            border-radius: 70px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .btn-cta:hover {
+            background: white;
+            color: var(--primary-deep);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.8rem;
+            border-radius: 60px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+        }
+
+        .timeline-item:hover {
+            box-shadow: 0 15px 35px rgba(30,63,79,0.1);
+        }
+
+        .timeline-year {
+            background: var(--primary-soft);
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h5 {
+            color: var(--primary-deep);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content p {
+            color: #4d6873;
+            margin-bottom: 0;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+            transition: all 0.2s;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .achievement-icon {
+            font-size: 3.2rem;
+            color: var(--accent-coral);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-card h5 {
+            color: var(--primary-deep);
+            font-weight: 700;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .event-date {
+            color: var(--accent-coral);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0.7rem 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 50px;
+            padding: 2.2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .testimonial-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-sand);
+        }
+
+        .testimonial-name {
+            color: var(--primary-deep);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-role {
+            color: var(--primary-soft);
+            font-weight: 500;
+        }
+
+        .testimonial-text {
+            background: var(--bg-warm);
+            padding: 1.5rem;
+            border-radius: 30px;
+            margin-top: 1.2rem;
+            border-left: 8px solid var(--accent-coral);
+            color: #2a454e;
+        }
+
+        .contact-section {
+            background: var(--bg-warm);
+        }
+
+        .contact-input {
+            border: none;
+            padding: 1.1rem 1.5rem;
+            border-radius: 70px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .btn-contact {
+            background: var(--primary-deep);
+            color: white;
+            border-radius: 70px;
+            padding: 1.1rem;
+            font-weight: 600;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-contact:hover {
+            background: var(--primary-soft);
+            color: white;
+        }
+
+        .footer {
+            background: var(--primary-deep);
+            color: rgba(255,255,255,0.9);
+            padding: 3.5rem 0 1.8rem;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-sand);
+            padding-right: 5px;
+        }
+
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 0.7rem;
+        }
+
+        hr {
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fa-regular fa-user me-2"></i>A.Alomary</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="about">
+        <div class="container text-center">
+            <h1 class="hero-name">Ahmad <span>Alomary</span></h1>
+            <div class="d-flex justify-content-center">
+                <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Ahmad Alomary" class="hero-avatar">
+            </div>
+            <div class="hero-desc mx-auto">
+                <i class="fa-solid fa-quote-left me-2" style="color: var(--accent-coral);"></i>
+                I'm a problem-solver at heart—whether it's architecting robust web platforms, engineering intelligent AI models, or designing efficient hardware systems. I thrive on complexity and turn challenges into elegant, scalable solutions. A collaborative thinker who adapts instantly, I deliver high-impact results remotely, saving resources without compromising quality. Got a bold idea? Let's build it.
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5" style="background: #f2ede7;">
+        <div class="container">
+            <h2 class="section-title text-center">Core Skills</h2>
+            <div class="row g-4 mt-3">
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fa-solid fa-globe skill-icon"></i>
+                        <h3 class="skill-title">Web Developer</h3>
+                        <p class="skill-items">Full-stack development, scalable architectures, RESTful APIs, cloud deployment</p>
+                        <div class="skill-sub">Tech Stack</div>
+                        <p class="skill-items">React, Node.js, Python (Django), PHP, MySQL, AWS</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fa-solid fa-brain skill-icon"></i>
+                        <h3 class="skill-title">AI Engineering</h3>
+                        <p class="skill-items">Machine learning pipelines, NLP, computer vision, model optimization</p>
+                        <div class="skill-sub">Frameworks</div>
+                        <p class="skill-items">TensorFlow, PyTorch, Scikit-learn, Hugging Face, OpenCV</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fa-solid fa-microchip skill-icon"></i>
+                        <h3 class="skill-title">Hardware Engineering</h3>
+                        <p class="skill-items">Embedded systems, FPGA, circuit design, IoT prototyping</p>
+                        <div class="skill-sub">Tools</div>
+                        <p class="skill-items">Arduino, Raspberry Pi, VHDL, Altium Designer, C++</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Projects</h2>
+            <p class="text-center mb-5" style="color: #4d6873;">A glimpse of work I'm proud of:</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="project-card-custom">
+                        <img src="https://placehold.co/800x500/1e3f4f/white?text=WowTaxi+UX" class="project-img" alt="WowTaxi">
+                        <div class="project-content">
+                            <span class="project-badge">UX/UI + Web</span>
+                            <h3 class="project-title">WowTaxi</h3>
+                            <p class="text-secondary">End-to-end UX design and front-end development for a ride-hailing platform across web and mobile.</p>
+                            <a href="#" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="project-card-custom">
+                        <img src="https://placehold.co/800x500/3a6b7c/white?text=Block+Expert" class="project-img" alt="Block Expert">
+                        <div class="project-content">
+                            <span class="project-badge">AI + Backend</span>
+                            <h3 class="project-title">Block Expert</h3>
+                            <p class="text-secondary">AI-driven authentication system with anomaly detection, built on Node.js and LevelDB with distributed ledger.</p>
+                            <a href="#" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mx-auto">
+                    <div class="project-card-custom">
+                        <img src="https://placehold.co/800x500/e9c7a3/1e3f4f?text=PayBox+Hardware" class="project-img" alt="PayBox">
+                        <div class="project-content">
+                            <span class="project-badge">Hardware + IoT</span>
+                            <h3 class="project-title">PayBox Secure</h3>
+                            <p class="text-secondary">Designed a fault-tolerant embedded payment terminal with secure element and MESOS-based backend.</p>
+                            <a href="#" class="btn btn-custom">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Interested in working together?</h2>
+            <p class="cta-text">Your next big idea deserves expert execution. Let's collaborate and build something remarkable.</p>
+            <a href="#" class="btn btn-cta"><i class="fa-regular fa-envelope me-2"></i>Contact Me</a>
+        </div>
+    </section>
+
+    <section id="experience" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Experience & Education</h2>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h5>MIT - Undergrad Project</h5>
+                            <p>Computer Science & Engineering, A+ grade</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-content">
+                            <h5>DoeWeb - Intern</h5>
+                            <p>Full-stack development with AngularJS, PHP</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-content">
+                            <h5>WebLook - Full-stack Dev</h5>
+                            <p>Built and maintained high-traffic web apps</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h5>Boston University</h5>
+                            <p>BSc in Computer Science, algorithms & programming</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-content">
+                            <h5>DiveNet - Backend Dev</h5>
+                            <p>Embedded systems for smart equipment</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">
+                            <h5>Remote Freelancer</h5>
+                            <p>Global collaborations as a full-stack & AI consultant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" style="background: #f2ede7;">
+        <div class="container">
+            <h2 class="section-title text-center">Achievements</h2>
+            <div class="row g-4 mt-3">
+                <div class="col-md-3 col-6">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-trophy achievement-icon"></i>
+                        <h5>AI Innovation Award</h5>
+                        <p class="text-secondary">DoeWeb 2017</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-microchip achievement-icon"></i>
+                        <h5>Hardware Hack Winner</h5>
+                        <p class="text-secondary">TechCrunch 2018</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-medal achievement-icon"></i>
+                        <h5>Open Source Contributor</h5>
+                        <p class="text-secondary">TensorFlow models</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-chart-simple achievement-icon"></i>
+                        <h5>Speaker at Web Summit</h5>
+                        <p class="text-secondary">'AI in Hardware'</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Upcoming Events</h2>
+            <p class="text-center mb-4" style="color: #4d6873;">Join me at these tech gatherings.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fa-regular fa-calendar fa-2x" style="color: var(--primary-soft);"></i>
+                        <h5 class="mt-3">AI Summit NYC</h5>
+                        <div class="event-date">July 05, 2026</div>
+                        <p class="text-secondary">Keynote: "Edge AI in Hardware"</p>
+                        <a href="#" class="btn btn-custom btn-sm">Register</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fa-regular fa-comments fa-2x" style="color: var(--primary-soft);"></i>
+                        <h5 class="mt-3">Embedded World</h5>
+                        <div class="event-date">July 20, 2026</div>
+                        <p class="text-secondary">Panel: Future of IoT</p>
+                        <a href="#" class="btn btn-custom btn-sm">Register</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fa-regular fa-pen-to-square fa-2x" style="color: var(--primary-soft);"></i>
+                        <h5 class="mt-3">DevOps Connect</h5>
+                        <div class="event-date">Aug 14, 2026</div>
+                        <p class="text-secondary">Workshop: Scalable Web Arch.</p>
+                        <a href="#" class="btn btn-custom btn-sm">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" style="background: #f2ede7;">
+        <div class="container">
+            <h2 class="section-title text-center">Kind Words</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonial-card">
+                        <img src="https://img.freepik.com/premium-photo/management-consultant-vector-flat-style-illustration_1033579-116640.jpg" class="testimonial-avatar" alt="Fred">
+                        <div>
+                            <h4 class="testimonial-name">Fred M.</h4>
+                            <p class="testimonial-role">Team Lead, DoeWeb</p>
+                            <div class="testimonial-text">
+                                Ahmad is exceptionally talented, with deep knowledge across web, AI, and hardware. He tackles complex problems with enthusiasm and delivers beyond expectations.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.lLSxQWISPLqk5twnUDBwEwAAAA?pid=ImgDet&w=181&h=181&c=7&dpr=1.3&o=7&rm=3" class="testimonial-avatar" alt="Jessica">
+                        <div>
+                            <h4 class="testimonial-name">Jessica K.</h4>
+                            <p class="testimonial-role">Tech Lead, WebLook</p>
+                            <div class="testimonial-text">
+                                A brilliant full-stack developer who also understands AI integration. Clients are always satisfied with his work. He's a true team player even when remote.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://img.freepik.com/premium-vector/smiling-businessman-suit_339976-9731.jpg" class="testimonial-avatar" alt="John">
+                        <div>
+                            <h4 class="testimonial-name">John W.</h4>
+                            <p class="testimonial-role">CEO, WowTaxi</p>
+                            <div class="testimonial-text">
+                                He took our complex startup idea and delivered an elegant, scalable solution—on time and under budget. Highly recommended.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 style="color: var(--primary-deep); font-weight: 800;">Got a proposition?</h2>
+                    <p style="color: var(--primary-soft); font-size: 1.2rem;">Let's discuss your next project.</p>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <form>
+                        <input type="text" class="form-control contact-input mb-3" placeholder="Your name">
+                        <input type="text" class="form-control contact-input mb-3" placeholder="Phone number">
+                        <button class="btn btn-contact w-100"><i class="fa-regular fa-paper-plane me-2"></i>Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                    <h4 style="color: white;">Ahmad Alomary</h4>
+                </div>
+                <div class="col-md-4 text-center">
+                    <ul class="list-unstyled d-flex justify-content-center flex-wrap gap-3">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#events">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" style="background: rgba(255,255,255,0.2);">
+            <p class="text-center pt-3 mb-0 small">© 2026 Ahmad Alomary. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
